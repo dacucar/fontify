@@ -2,7 +2,7 @@
 
 namespace Fontify
 {
-    public class StackSideBar : Widget
+    public class StackSideBar : VBox
     {
         private ListBox listBox;
 
@@ -18,8 +18,8 @@ namespace Fontify
             set
             {
                 stack = value;
-                stack.ChildAdded += OnStackContentsChanged;
-                stack.ChildRemoved += OnStackContentsChanged;
+                stack.PageAdded += OnStackContentsChanged;
+                stack.PageRemoved += OnStackContentsChanged;
                 UpdateListContents ();
             } 
         }
@@ -27,14 +27,13 @@ namespace Fontify
         public StackSideBar ()
         {
             listBox = new ListBox ();
-            listBox.ExpandHorizontal = true;
             listBox.SelectionChanged += OnSelectionChanged;
-            Content = listBox;
+			PackStart(listBox, true);
         }
 
         public void OnSelectionChanged ( object sender, System.EventArgs e )
         {
-            stack.SetVisibleChild ( stack.Names[listBox.SelectedRow] );
+            stack.SetVisiblePage ( listBox.SelectedRow );
         }
 
         private void OnStackContentsChanged ( object sender, System.EventArgs e )
@@ -42,9 +41,23 @@ namespace Fontify
             UpdateListContents ();
         }
 
+		/*protected override Size OnGetPreferredSize(SizeConstraint widthConstraint, SizeConstraint heightConstraint)
+		{
+			if (stack == null)
+			{
+				return new Size(-1, -1);
+			}
+
+			return listBox.Surface.GetPreferredSize(widthConstraint, heightConstraint);
+		}*/
+
         private void UpdateListContents ()
         {
-            listBox.DataSource = new SimpleListDataSource ( stack.Titles );
+			listBox.Items.Clear();
+			foreach (var s in stack.PageTitles)
+			{
+				listBox.Items.Add(s);
+			}
         }
     }
 }

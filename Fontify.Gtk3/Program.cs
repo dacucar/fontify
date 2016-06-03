@@ -1,5 +1,7 @@
 ﻿using System;
 using Xwt;
+using Fontify.Pango;
+using Fontify.GlyphDesigner;
 
 namespace Fontify.Gtk3
 {
@@ -10,7 +12,7 @@ namespace Fontify.Gtk3
         {
             Application.Initialize ( ToolkitType.Gtk3 );
 
-            MainWindow w = new MainWindow ();
+            GlyphDesigner.GlyphDesignerWindow w = new GlyphDesigner.GlyphDesignerWindow ();
             w.Show ();
 
             Application.Run ();

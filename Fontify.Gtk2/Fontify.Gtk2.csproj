@@ -31,6 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="gtk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="pango-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="glib-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fontify\Fontify.csproj">
@@ -44,6 +47,10 @@
     <ProjectReference Include="..\Xwt\Xwt.Gtk\Xwt.Gtk.csproj">
       <Project>{C3887A93-B2BD-4097-8E2F-3A063EFF32FD}</Project>
       <Name>Xwt.Gtk</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fontify.Pango\Fontify.Pango.csproj">
+      <Project>{F00E9830-FAA0-46AD-8017-975343143B6A}</Project>
+      <Name>Fontify.Pango</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

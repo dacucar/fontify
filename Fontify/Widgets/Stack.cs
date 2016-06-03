@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using Xwt;
 
@@ -7,55 +8,73 @@ namespace Fontify
 {
     public class Stack : Widget
     {
-        private IDictionary<string, StackChild> children;
+        private ICollection<StackPage> pages;
+		private string visiblePageName;
 
-        public event EventHandler ChildAdded;
-        public event EventHandler ChildRemoved;
+        public event EventHandler PageAdded;
+        public event EventHandler PageRemoved;
 
         public Stack ()
         {
         }
 
-        private string visibleChildName;
+		public Widget this[string name]
+		{
+			get
+			{
+				return pages.First(_ => _.Name == name).Widget;
+			}
+		}
 
-        public Widget VisibleChild
+		public Widget VisiblePage
         {
             get
             { 
-                return children[visibleChildName].Widget;
+				return pages.First(_ => _.Name == visiblePageName).Widget;
             }
         }
 
-        public void SetVisibleChild ( string name )
+		public void SetVisiblePage ( int index )
+		{
+			if ( pages == null || index < 0 || index >= pages.Count() )
+			{
+				throw new ArgumentOutOfRangeException();
+			}
+
+			setVisiblePage(pages.ElementAt(index));
+		}
+
+        public void SetVisiblePage ( string name )
         {
-            if ( !children.ContainsKey ( name ) )
+			if ( !pages.Select(_ => _.Name).Contains ( name ) )
             {
                 throw new ArgumentException ();
             }
 
-            visibleChildName = name;
-            Content = children[name].Widget;
+			var page = pages.First(_ => _.Name == name);
+
+			setVisiblePage(page);
         }
 
-        public string GetVisibleChildName ()
+		public string GetVisiblePageName ()
         {
-            return visibleChildName;
+			return visiblePageName;
         }
 
-        public string[] Names
+        public string[] PageNames
         {
             get
             {
-                return children.Values.Select ( _ => _.Name ).ToArray ();
+                return pages.Select ( _ => _.Name ).ToArray ();
             }
         }
 
 
-        public string[] Titles
+        public string[] PageTitles
         {
             get
             {
-                return children.Values.Select ( _ => _.Title ).ToArray ();
+                return pages.Select ( _ => _.Title ).ToArray ();
             }
         }
 
@@ -71,43 +90,54 @@ namespace Fontify
 
         public void Remove ( string name )
         {
-            children.Remove ( name );
-            if ( ChildRemoved != null )
+            if ( pages.Remove(pages.First(_ => _.Name == name)) 
+			    && PageRemoved != null )
             {
-                ChildRemoved.Invoke ( this, EventArgs.Empty );
+                PageRemoved.Invoke ( this, EventArgs.Empty );
             }
         }
+
+		private void setVisiblePage(StackPage page)
+		{
+			visiblePageName = page.Name;
+			Content = page.Widget;
+		}
 
         private void addChild ( Widget widget, string name, string title = "" )
         {
 
-            if ( children == null )
+            if ( pages == null )
             {
-                children = new SortedDictionary<string, StackChild> ();
+				pages = new List<StackPage>();
             }
 
-            var child = new StackChild (){ Name = name, Title = title, Widget = widget };
+			if (pages.Select(_ => _.Name).Contains(name))
+			{
+				throw new ArgumentException();
+			}
 
-            children.Add ( name, child );
+            var child = new StackPage (){ Name = name, Title = title, Widget = widget };
+
+            pages.Add ( child );
 
             if ( Content == null )
             {
-                SetVisibleChild ( name );
+                SetVisiblePage ( name );
             }
 
-            if ( ChildAdded != null )
+            if ( PageAdded != null )
             {
-                ChildAdded.Invoke ( this, EventArgs.Empty );
+                PageAdded.Invoke ( this, EventArgs.Empty );
             }
         }
 
-        private sealed class StackChild
+        private sealed class StackPage
         {
-            public string Name { get; internal set; }
+            public string Name { get; set; }
 
-            public string Title { get; internal set; }
+            public string Title { get; set; }
 
-            public Widget Widget { get; internal set; }
+            public Widget Widget { get; set; }
         }
     }
 }

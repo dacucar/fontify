@@ -1,5 +1,6 @@
 ﻿using System;
 using Xwt;
+using Fontify.GlyphDesigner;
 
 namespace Fontify.Wpf
 {
@@ -10,7 +11,7 @@ namespace Fontify.Wpf
         {
             Application.Initialize ( ToolkitType.Wpf );
 
-            MainWindow w = new MainWindow ();
+            GlyphDesigner.GlyphDesignerWindow w = new GlyphDesigner.GlyphDesignerWindow ();
             w.Show ();
 
             Application.Run ();
