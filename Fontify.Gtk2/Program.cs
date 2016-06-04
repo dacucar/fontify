@@ -1,8 +1,6 @@
 ﻿using System;
 using Xwt;
 using Fontify.GlyphDesigner;
-using Fontify.Pango;
-using Gtksharp = Gtk;
 
 namespace Fontify.Gtk2
 {
@@ -13,11 +11,8 @@ namespace Fontify.Gtk2
         {
             Application.Initialize ( ToolkitType.Gtk );
 
-            GlyphDesigner.GlyphDesignerWindow w = new GlyphDesigner.GlyphDesignerWindow ();
+            var w = new GlyphDesignerWindow ();
             w.Show ();
-			//var windowBackEnd = (Xwt.GtkBackend.WindowBackend);
-			//w.FontFamiliesSource = new PangoFontFamiliesSource();
-			
 
             Application.Run ();
 

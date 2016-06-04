@@ -45,10 +45,6 @@
       <Project>{3B25FD1F-CEBA-4450-8893-DC330FDB56A7}</Project>
       <Name>Xwt.Gtk3</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Fontify.Pango\Fontify.Pango.csproj">
-      <Project>{F00E9830-FAA0-46AD-8017-975343143B6A}</Project>
-      <Name>Fontify.Pango</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />

@@ -41,7 +41,8 @@
     <Compile Include="GlyphDesigner\ShadowPanel.cs" />
     <Compile Include="GlyphDesigner\GlyphDesignerWindow.cs" />
     <Compile Include="GlyphDesigner\PreviewPanel.cs" />
-    <Compile Include="IFontFamiliesSource.cs" />
+    <Compile Include="Widgets\LabelledSlider.cs" />
+    <Compile Include="Widgets\ConcealableCheckPanel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

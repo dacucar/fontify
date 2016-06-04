@@ -27,8 +27,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xwt.Mac", "Xwt\Xwt.Mac\Xwt.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xwt.XamMac", "Xwt\Xwt.XamMac\Xwt.XamMac.csproj", "{B7C1673E-5124-4BE5-8D21-EC8B12F85B6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fontify.Pango", "Fontify.Pango\Fontify.Pango.csproj", "{F00E9830-FAA0-46AD-8017-975343143B6A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,14 +131,6 @@ Global
 		{E95833C9-90AA-4366-9262-0A1BED148249}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E95833C9-90AA-4366-9262-0A1BED148249}.Release|x86.ActiveCfg = Release|Any CPU
 		{E95833C9-90AA-4366-9262-0A1BED148249}.Release|x86.Build.0 = Release|Any CPU
-		{F00E9830-FAA0-46AD-8017-975343143B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F00E9830-FAA0-46AD-8017-975343143B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F00E9830-FAA0-46AD-8017-975343143B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F00E9830-FAA0-46AD-8017-975343143B6A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F00E9830-FAA0-46AD-8017-975343143B6A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{F00E9830-FAA0-46AD-8017-975343143B6A}.Debug|x86.Build.0 = Debug|Any CPU
-		{F00E9830-FAA0-46AD-8017-975343143B6A}.Release|x86.ActiveCfg = Release|Any CPU
-		{F00E9830-FAA0-46AD-8017-975343143B6A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{92494904-35FA-4DC9-BDE9-3A3E87AC49D3} = {29FBB8AA-3F5C-48DD-B2D2-D7E617073D56}

@@ -2,12 +2,12 @@
 
 namespace Fontify.GlyphDesigner
 {
-	public class ShadowPanel : VBox
-	{
-		public ShadowPanel()
-		{
-			PackStart(new Label("Shadow Properties"));
-		}
-	}
+    public class ShadowPanel : ConcealableCheckPanel
+    {
+        public ShadowPanel ()
+        {
+            Text = "Use Shadow";
+        }
+    }
 }
 
