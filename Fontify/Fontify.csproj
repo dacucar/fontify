@@ -43,16 +43,17 @@
     <Compile Include="GlyphDesigner\PreviewPanel.cs" />
     <Compile Include="Widgets\LabelledSlider.cs" />
     <Compile Include="Widgets\ConcealableCheckPanel.cs" />
+    <Compile Include="GlyphDesigner\GlyphDesigner.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Widgets\" />
+    <Folder Include="GlyphDesigner\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xwt\Xwt\Xwt.csproj">
       <Project>{92494904-35FA-4DC9-BDE9-3A3E87AC49D3}</Project>
       <Name>Xwt</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Widgets\" />
-    <Folder Include="GlyphDesigner\" />
   </ItemGroup>
 </Project>
